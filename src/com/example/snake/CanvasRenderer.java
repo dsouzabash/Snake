@@ -50,7 +50,7 @@ public class CanvasRenderer implements Renderer {
         Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
 
         // Draw triangle
-        snake.draw(scratch);
+        //snake.draw(scratch);
 	}
 
 	@Override
@@ -69,8 +69,8 @@ public class CanvasRenderer implements Renderer {
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		// Set the background frame color
-		GLES20.glClearColor(0.0f, 10.0f, 10.0f, 0.0f);
-		snake = new SnakeLayout();
+		GLES20.glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
+		//snake = new SnakeLayout();
 		square = new Square();
 	}
 	

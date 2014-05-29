@@ -1,7 +1,11 @@
 package com.example.snake;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.pm.ConfigurationInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -14,20 +18,27 @@ public class HelpActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.game_layout);
-	    layout = (RelativeLayout) findViewById(R.id.parent);
-	    layout.setVisibility(View.VISIBLE);
+	    
+	    // Check if the system supports OpenGL ES 2.0.
+	    final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+	    final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
+	    final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
+	 
+	    if (supportsEs2)
+	    {
+	    	Log.d("HelpActivity", "Supports OpenGL 2.0");
+	    	setContentView(R.layout.game_layout);
+		    layout = (RelativeLayout) findViewById(R.id.parent);
+		    layout.setVisibility(View.VISIBLE);
+	    }
+	    else
+	    {
+	        // This is where you could create an OpenGL ES 1.x compatible
+	        // renderer if you wanted to support both ES 1 and ES 2.
+	    	Log.d("HelpActivity", "Does not support OpenGL 2.0");
+	        return;
+	    }
 	}
-
-
-	/*@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		if ( event.getAction() == MotionEvent.ACTION_DOWN)
-		{
-			Toast.makeText(getBaseContext(), "Touched Screen", Toast.LENGTH_LONG).show();
-		}
-		return super.onTouchEvent( event );
-	}*/
 	
 	public void onClick ( View v )
 	{

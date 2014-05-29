@@ -15,6 +15,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Button btn = (Button) findViewById(R.id.btn_resume);
+		btn.setEnabled(false);
 	}
 
 	@Override
@@ -37,22 +39,29 @@ public class MainActivity extends Activity implements OnClickListener {
 			case R.id.btn_exit:
 				exit_app();
 				break;
+			case R.id.btn_setting:
+				open_setting ();
+				break;
 			default:
 				break;
 		}
 	}
 	
-	public void open_help_page ()
+	private void open_help_page ()
 	{
 		startActivity(new Intent(this,HelpActivity.class));
 	}
 	
-	public void open_credit_page ( )
+	private void open_credit_page ( )
 	{
 		startActivity(new Intent (this,CreditActivity.class));
 	}
 	
-	public void exit_app()
+	private void open_setting ( )
+	{
+		startActivity(new Intent (this,SettingActivity.class));
+	}
+	private void exit_app()
 	{
 		finish();
 	}
