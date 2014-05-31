@@ -46,7 +46,7 @@ public class HelpActivity extends Activity {
 		switch ( v.getId())
 		{
 		case R.id.btn_setting:
-			text = "Setting Button";
+			text = "Ashely is Gay";
 			break;
 		case R.id.btn_left:
 			text = "Left Button";
