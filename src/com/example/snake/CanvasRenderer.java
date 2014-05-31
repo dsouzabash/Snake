@@ -24,6 +24,7 @@ public class CanvasRenderer implements Renderer {
 	Square square;
 	@Override
 	public void onDrawFrame(GL10 gl) {
+		System.out.println("Hello World!!");
         float[] scratch = new float[16];
 
         // Draw background color
